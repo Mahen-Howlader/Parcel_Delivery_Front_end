@@ -1,90 +1,54 @@
-import { Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import image from "../../assets/hero.jpeg";
+function Hero() {
+  return (
+<section className="relative bg-secondary text-primary-foreground rounded-t-2xl pt-32 pb-10 overflow-hidden">
+  <div className="container mx-auto px-6 md:px-12 lg:px-20 flex flex-col-reverse md:flex-row items-center gap-12">
+    
+    {/* Left Content */}
+    <div className="flex-1 text-center md:text-left">
+      <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+        Fast & Reliable <span className="text-blue-600">Parcel Delivery</span> Anywhere You Need
+      </h1>
+      <p className="text-muted mb-8 max-w-md mx-auto md:mx-0">
+        Send and receive parcels quickly with real-time tracking and trusted courier partners — at the best rates.
+      </p>
+      <div className="">
+        <Button size="lg" variant={"primary"} className="text-lg cursor-pointer btn-special-font">
+          Get Start
+        </Button>
+      </div>
+    </div>
 
-interface Hero7Props {
-  heading?: string;
-  description?: string;
-  button?: {
-    text: string;
-    url: string;
-  };
-  reviews?: {
-    count: number;
-    rating?: number;
-    avatars: {
-      src: string;
-      alt: string;
-    }[];
-  };
+    {/* Right Image */}
+    <div className="flex-1 relative">
+      <img
+        src={image}
+        alt="Parcel Delivery"
+        className="w-full max-w-lg mx-auto animate-float"
+      />
+      <div className="absolute -top-6 -right-6 bg-card text-card-foreground px-4 py-3 rounded-2xl shadow-md">
+        <p className="text-sm font-semibold">
+          🚚 2,000+ Parcels Delivered Today!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Floating Animation */}
+  <style>{`
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+  `}</style>
+</section>
+
+  );
 }
 
-export const Hero = ({
-  heading = "A Collection of Components Built With Shadcn & Tailwind",
-  description = "Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.",
-  button = {
-    text: "Explore",
-    url: "/tour",
-  },
-  reviews = {
-    count: 200,
-    rating: 5.0,
-    avatars: [
-      { src: "https://i.pravatar.cc/50?img=1", alt: "Avatar 1" },
-      { src: "https://i.pravatar.cc/50?img=2", alt: "Avatar 2" },
-      { src: "https://i.pravatar.cc/50?img=3", alt: "Avatar 3" },
-      { src: "https://i.pravatar.cc/50?img=4", alt: "Avatar 4" },
-      { src: "https://i.pravatar.cc/50?img=5", alt: "Avatar 5" },
-    ],
-  },
-}: Hero7Props) => {
-  return (
-  <div className="bg-secondary rounded-lg">
-      <section className="py-24 text-center">
-      <div className="container mx-auto max-w-5xl px-4">
-        <h1 className="text-3xl font-semibold lg:text-6xl">{heading}</h1>
-        <p className="mt-4 text-gray-600 text-lg">{description}</p>
-
-        {/* Dummy Button */}
-        <a
-          href={button.url}
-          className="inline-block mt-8 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition"
-        >
-          {button.text}
-        </a>
-
-        {/* Reviews Section */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <div className="flex -space-x-3">
-            {reviews.avatars.map((avatar, index) => (
-              <img
-                key={index}
-                src={avatar.src}
-                alt={avatar.alt}
-                className="w-12 h-12 rounded-full border-2 border-white"
-              />
-            ))}
-          </div>
-
-          <div className="flex flex-col items-center sm:items-start">
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, index) => (
-                <Star
-                  key={index}
-                  className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                />
-              ))}
-              <span className="ml-1 font-semibold">
-                {reviews.rating?.toFixed(1)}
-              </span>
-            </div>
-            <p className="text-gray-500 font-medium">
-              from {reviews.count}+ reviews
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-    </section>
-  </div>
-  );
-};
+export default Hero;

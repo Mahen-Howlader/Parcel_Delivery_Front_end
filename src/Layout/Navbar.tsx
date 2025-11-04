@@ -14,15 +14,14 @@ import { Link } from "react-router"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "#", label: "Home", active: true },
-  { href: "#", label: "Features" },
-  { href: "#", label: "Pricing" },
-  { href: "#", label: "About" },
+  { href: "/", label: "Home", active: true },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ]
 
 export default function Navbar() {
   return (
-    <div className="absolute w-full mt-4 text-white">
+    <div className="absolute top-10 z-10 w-full  text-white">
       <header className="container mx-auto  px-4 md:px-14">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Left side */}
@@ -108,7 +107,7 @@ export default function Navbar() {
           {/* Right side */}
           <div className="flex items-center gap-2">
             <Button asChild variant="ghost" className="" size={"lg"}>
-              <a href="#">Sign In</a>
+              <Link to={"/login"}>Sign In</Link>
             </Button>
             <Button asChild size="lg" variant={"secondary"} className="text-lg btn-special-font">
               <Link to={"/register"}>Register</Link>

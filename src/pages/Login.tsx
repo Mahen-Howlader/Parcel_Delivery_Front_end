@@ -1,7 +1,9 @@
+import LoginForm from "@/modules/Authentication/LoginFrom";
+
 function Login() {
     return (
         <div>
-            Login
+           <LoginForm></LoginForm>
         </div>
     );
 }

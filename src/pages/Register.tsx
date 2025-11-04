@@ -1,7 +1,8 @@
+import RegisterFrom from '@/modules/Authentication/RegisterFrom';
 function Register() {
     return (
         <div>
-            Register
+            <RegisterFrom></RegisterFrom>
         </div>
     );
 }

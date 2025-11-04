@@ -1,5 +1,4 @@
-import { Hero } from "@/modules/HomePage/Hero";
-
+import Hero from "@/modules/HomePage/Hero";
 
 function HomePage() {
     return (
