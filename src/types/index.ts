@@ -9,4 +9,13 @@ export interface ISidebarItem {
             Component: ComponentType
         }
     ]
-}
+};
+
+
+
+export interface IResponse<T>{
+  statusCode: number
+  success: boolean
+  data: T
+  message: string
+};

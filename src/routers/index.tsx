@@ -1,5 +1,5 @@
 import App from "@/App";
-import DashboardLayout from "@/Layout/DashboardLayout";
+import DashboardLayout from "@/components/layout/DashboardLayout";
 import HomePage from "@/pages/HomePage";
 import { generateRoutes } from "@/utils/genaretRoutes";
 import { createBrowserRouter, Navigate } from "react-router";

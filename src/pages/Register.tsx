@@ -1,8 +1,9 @@
-import RegisterFrom from '@/modules/Authentication/RegisterFrom';
+import RegisterForm from "@/components/modules/Authentication/RegisterFrom";
+
 function Register() {
     return (
         <div>
-            <RegisterFrom></RegisterFrom>
+            <RegisterForm></RegisterForm>
         </div>
     );
 }

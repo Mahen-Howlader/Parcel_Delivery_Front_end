@@ -1,4 +1,4 @@
-import LoginForm from "@/modules/Authentication/LoginFrom";
+import LoginForm from "@/components/modules/Authentication/LoginFrom";
 
 function Login() {
     return (

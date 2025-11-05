@@ -12,8 +12,11 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import Password from "@/components/Password"
 import { motion } from "framer-motion"
+import Password from "@/components/ui/password"
+import { useRegisterMutation } from "@/redux/features/auth/auth.api"
+import { toast } from "sonner"
+import { useNavigate } from "react-router"
 
 // ✅ Zod Schema
 const formSchema = z
@@ -29,6 +32,8 @@ const formSchema = z
   })
 
 function RegisterForm() {
+  const navigate = useNavigate();
+  const [register] = useRegisterMutation();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,11 +42,26 @@ function RegisterForm() {
       password: "",
       confirmPassword: "",
     },
-  })
+  });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-  }
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    const toastId = toast.loading("Register started....")
+    const userInfo = {
+      name: data.name,
+      email: data.email,
+      password: data.password
+    };
+    console.log(userInfo)
+    try {
+      const result = await register(userInfo).unwrap();
+      if (result.success) {
+        toast.success('Register Successfull', {id : toastId});
+        navigate("/login")
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-emerald-700 via-emerald-900 to-slate-900 p-4">

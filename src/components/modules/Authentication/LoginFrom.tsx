@@ -13,7 +13,11 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import Password from "@/components/Password"
+import Password from "@/components/ui/password"
+import { useLoginMutation } from "@/redux/features/auth/auth.api"
+import { toast } from "sonner"
+import { useNavigate } from "react-router"
+
 
 // ✅ Validation Schema
 const loginSchema = z.object({
@@ -22,17 +26,37 @@ const loginSchema = z.object({
 })
 
 function LoginForm() {
+  const navigate = useNavigate();
+  const [login] = useLoginMutation();
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
-  })
+  });
 
-  function onSubmit(values: z.infer<typeof loginSchema>) {
-    console.log("Login data:", values)
-  }
+  const onSubmit = async (data: z.infer<typeof loginSchema>) => {
+    // console.log("Login data:", data)
+    const toastId = toast.loading("Login starting....")
+
+    try {
+      const result = await login(data).unwrap();
+      // console.log(result);
+      if (result.success) {
+        toast.success('Login Successfull', { id: toastId });
+        navigate("/")
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.data.message === "Password not matched") {
+        toast.error('Invalid Credential', { id: toastId });
+      };
+      if (error.data.message === "User not Found") {
+        toast.error('User not Found', { id: toastId });
+      };
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-slate-900 via-emerald-900 to-emerald-700 p-4">

@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router'
 import './App.css'
-import CommonLayout from './Layout/CommonLayout'
+import CommonLayout from './components/layout/CommonLayout'
 function App() {
   return (
     <div>

@@ -11,6 +11,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Link } from "react-router"
+import { ModeToggle } from "./ModeToggler"
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -20,6 +22,11 @@ const navigationLinks = [
 ]
 
 export default function Navbar() {
+  const { data, isLoading } = useUserInfoQuery(undefined);
+
+  console.log(data);
+
+  
   return (
     <div className="absolute top-10 z-10 w-full  text-white">
       <header className="container mx-auto  px-4 md:px-14">
@@ -106,6 +113,7 @@ export default function Navbar() {
           </div>
           {/* Right side */}
           <div className="flex items-center gap-2">
+            <ModeToggle></ModeToggle>
             <Button asChild variant="ghost" className="" size={"lg"}>
               <Link to={"/login"}>Sign In</Link>
             </Button>
