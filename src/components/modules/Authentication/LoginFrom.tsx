@@ -38,7 +38,7 @@ function LoginForm() {
 
   const onSubmit = async (data: z.infer<typeof loginSchema>) => {
     // console.log("Login data:", data)
-    const toastId = toast.loading("Login starting....")
+    const toastId = toast.loading("Login starting....");
 
     try {
       const result = await login(data).unwrap();

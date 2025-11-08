@@ -1,14 +1,15 @@
 import Sender from "@/pages/Sender/Sender";
+import SenderAnalytics from "@/pages/Sender/SenderAnalytics";
 import type { ISidebarItem } from "@/types";
 
 export const senderSidebarItems: ISidebarItem[] = [
     {
-        title: "History",
+        title: "Sender Sidebar",
         items: [
             {
-                title: "Send",
+                title: "Analytics",
                 url: '/sender/analytics',
-                Component: Sender
+                Component: SenderAnalytics
             }
         ]
     },
@@ -16,8 +17,8 @@ export const senderSidebarItems: ISidebarItem[] = [
         title: "History",
         items: [
             {
-                title: "Send",
-                url: '/sender/sender',
+                title: "Sending Parcel",
+                url: '/sender/create-parcel',
                 Component: Sender
             }
         ]

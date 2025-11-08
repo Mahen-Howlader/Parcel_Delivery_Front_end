@@ -11,11 +11,11 @@ export interface ISidebarItem {
     ]
 };
 
-
-
 export interface IResponse<T>{
   statusCode: number
   success: boolean
   data: T
   message: string
 };
+
+export type TRole = "ADMIN" | "SENDER" | "USER";

@@ -1,14 +1,15 @@
-import Sender from "@/pages/Sender/Sender";
+import AllParcel from "@/pages/Admin/AllParcel";
+import Analytics from "@/pages/Admin/Analytics";
 import type { ISidebarItem } from "@/types";
 
-export const adminSidebarItems : ISidebarItem[] = [
-   {
-        title: "Dashboard",
+export const adminSidebarItems: ISidebarItem[] = [
+    {
+        title: "Admin Sidebar",
         items: [
             {
-                title: "Send",
-                url: '/admin/sender',
-                Component: Sender
+                title: "All User",
+                url: '/admin/analytics',
+                Component: Analytics
             }
         ]
     },
@@ -16,9 +17,9 @@ export const adminSidebarItems : ISidebarItem[] = [
         title: "Parcel Management",
         items: [
             {
-                title: "Send",
-                url: '/admin/sender',
-                Component: Sender
+                title: "All Parcel",
+                url: '/admin/all-parcel',
+                Component: AllParcel
             }
         ]
     }

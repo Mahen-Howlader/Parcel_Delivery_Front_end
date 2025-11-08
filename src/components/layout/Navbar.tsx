@@ -12,21 +12,31 @@ import {
 } from "@/components/ui/popover"
 import { Link } from "react-router"
 import { ModeToggle } from "./ModeToggler"
-import { useUserInfoQuery } from "@/redux/features/auth/auth.api"
+import { authApi, useUserInfoQuery, useUserLogoutMutation } from "@/redux/features/auth/auth.api"
+import { useAppDispatch } from "@/redux/hook"
+import { role } from "@/constants/role"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "Home", active: true },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/about", label: "About", role: "PUBLIC" },
+  { href: "/contact", label: "Contact", role: "PUBLIC" },
+  { href: "/admin", label: "Dashboard", role: role.admin },
+  { href: "/user", label: "Dashboard", role: role.user },
+  { href: "/sender", label: "Dashboard", role: role.sender },
 ]
 
 export default function Navbar() {
-  const { data, isLoading } = useUserInfoQuery(undefined);
+  const { data } = useUserInfoQuery(undefined);
+  const [logout] = useUserLogoutMutation();
+  const dispatch = useAppDispatch();
 
-  console.log(data);
+  async function handelLogout() {
+    await logout(undefined)
+    dispatch(authApi.util.resetApiState());
+  };
 
-  
+
   return (
     <div className="absolute top-10 z-10 w-full  text-white">
       <header className="container mx-auto  px-4 md:px-14">
@@ -98,7 +108,9 @@ export default function Navbar() {
             <NavigationMenu className="max-md:hidden pt-2">
               <NavigationMenuList className="gap-x-10 ">
                 {navigationLinks.map((link, index) => (
-                  <NavigationMenuItem key={index}>
+                  <>
+                    {
+                      link.role === "PUBLIC" && <NavigationMenuItem key={index}>
                     <NavigationMenuLink
                       active={link.active}
                       href={link.href}
@@ -107,6 +119,20 @@ export default function Navbar() {
                       {link.label}
                     </NavigationMenuLink>
                   </NavigationMenuItem>
+                    }
+                    {
+                      link.role === data?.data?.role && <NavigationMenuItem key={index}>
+                    <NavigationMenuLink
+                      active={link.active}
+                      href={link.href}
+                      className="font-medium text-white"
+                    >
+                      {link.label}
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                    }
+                  
+                  </>
                 ))}
               </NavigationMenuList>
             </NavigationMenu>
@@ -114,12 +140,20 @@ export default function Navbar() {
           {/* Right side */}
           <div className="flex items-center gap-2">
             <ModeToggle></ModeToggle>
-            <Button asChild variant="ghost" className="" size={"lg"}>
-              <Link to={"/login"}>Sign In</Link>
-            </Button>
-            <Button asChild size="lg" variant={"secondary"} className="text-lg btn-special-font">
-              <Link to={"/register"}>Register</Link>
-            </Button>
+            {
+              data?.data?.email && <Button className="cursor-pointer" onClick={() => handelLogout()} variant="secondary" size={"lg"}>
+                Logout
+              </Button>
+            }
+            {
+              !data?.data?.email && <>
+                <Button asChild variant="ghost" className="" size={"lg"}>
+                  <Link to={"/login"}>Sign In</Link>
+                </Button>
+                <Button asChild size="lg" variant={"secondary"} className="text-lg btn-special-font">
+                  <Link to={"/register"}>Register</Link>
+                </Button></>
+            }
           </div>
         </div>
       </header>
