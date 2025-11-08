@@ -7,8 +7,6 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CreateParcelFrom from "@/components/modules/Sender/createParcelFrom";
 import {  useParcelsMeQuery } from "@/redux/features/parcel/parcel.api";
 import ParcelTable from "@/components/modules/Sender/ParcelTabel";
@@ -40,7 +38,7 @@ function Sender() {
                             This information will be used to send the parcel.
                         </AlertDialogDescription>
 
-                        <CreateParcelFrom /> {/* তোমার Form component */}
+                        <CreateParcelFrom closeModal={() => setOpen(false)}/> 
                     </AlertDialogContent>
 
                 </AlertDialog>

@@ -12,11 +12,15 @@ import {
 import { Button } from "@/components/ui/button"
 import type { Parcel } from "../Sender/ParcelTabel";
 import { useParcelCancelledMutation } from "@/redux/features/parcel/parcel.api";
+import { toast } from "sonner";
 
 export function AlertCancelParcel({ parcel }: { parcel: Parcel }) {
     const [cancellParcel] = useParcelCancelledMutation();
     const handelBlockUnblock = async (id: string) => {
-      const res = await cancellParcel(id);
+        const res = await cancellParcel(id).unwrap();
+        if (res.success) {
+            toast.success("Cancelled successfully...")
+        }
     };
 
     return (

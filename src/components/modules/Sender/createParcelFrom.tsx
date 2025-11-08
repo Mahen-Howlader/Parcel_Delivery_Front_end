@@ -12,6 +12,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useCreateParcelMutation } from "@/redux/features/parcel/parcel.api";
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { toast } from "sonner";
+import { useNavigate } from "react-router";
 
 // Form validation schema using zod
 const parcelSchema = z.object({
@@ -24,8 +28,14 @@ const parcelSchema = z.object({
   deliveryDate: z.string().min(1, "Delivery date is required"), // you can convert to Date later
   deliveryMan: z.string().optional(),
 });
+type CreateParcelFormProps = {
+  closeModal: () => void;
+};
+export default function ParcelCreateForm({ closeModal }: CreateParcelFormProps) {
+  const navigate = useNavigate();
+  const [createParcel] = useCreateParcelMutation();
+  const { data } = useUserInfoQuery(undefined);
 
-export default function ParcelCreateForm() {
   const form = useForm<z.infer<typeof parcelSchema>>({
     resolver: zodResolver(parcelSchema),
     defaultValues: {
@@ -40,9 +50,27 @@ export default function ParcelCreateForm() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof parcelSchema>) => {
-    console.log("Parcel Data:", values);
-    // এখানে API call করবে parcel create করার জন্য
+  const onSubmit = async (values: z.infer<typeof parcelSchema>) => {
+    const userId = data?.data?._id;
+    if (!userId) {
+      navigate("/")
+      return toast.error("Please Login ...");
+    };
+
+    const parcelData = {
+      senderId: userId,
+      ...values
+    };
+    try {
+      const res = await createParcel(parcelData).unwrap();
+      if (res.success) {
+        toast.success("Parcel Create Succesfully")
+        closeModal(); 
+      }
+    } catch (error: any) {
+      toast.error("Invalid Error..")
+    }
+
   };
 
   return (
@@ -107,7 +135,12 @@ export default function ParcelCreateForm() {
             <FormItem>
               <FormLabel>Weight (kg)</FormLabel>
               <FormControl>
-                <Input type="number" step="0.1" {...field} />
+                <Input
+                  type="number"
+                  step="0.1"
+                  {...field}
+                  onChange={(e) => field.onChange(parseFloat(e.target.value))}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -120,7 +153,8 @@ export default function ParcelCreateForm() {
             <FormItem>
               <FormLabel>Fee (৳)</FormLabel>
               <FormControl>
-                <Input type="number" step="0.1" {...field} />
+                <Input type="number" step="0.1" {...field}
+                  onChange={(e) => field.onChange(parseFloat(e.target.value))} />
               </FormControl>
               <FormMessage />
             </FormItem>

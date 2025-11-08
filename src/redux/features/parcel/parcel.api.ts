@@ -1,4 +1,5 @@
 import { baseApi } from "@/redux/baseApi";
+import type { IResponse } from "@/types";
 import type { IParcelFrontend, ParcelStatus } from "@/types/parcel.type";
 
 export const userApi = baseApi.injectEndpoints({
@@ -38,8 +39,18 @@ export const userApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["PARCEL"],
         }),
+        createParcel: builder.mutation<IResponse<null>, IParcelFrontend>({
+            query: (parcelInfo) => (
+                {
+                url: `/parcels`,
+                method: "POST",
+                data : parcelInfo
+            }
+        ),
+            invalidatesTags: ["PARCEL"],
+        }),
     })
 });
 
 
-export const { useAllParcelQuery, useParcelBlockUnblockMutation, useParcelStatusUpdateMutation, useParcelsMeQuery , useParcelCancelledMutation} = userApi;
+export const { useAllParcelQuery, useParcelBlockUnblockMutation, useParcelStatusUpdateMutation, useParcelsMeQuery , useParcelCancelledMutation, useCreateParcelMutation} = userApi;

@@ -20,7 +20,7 @@ export type ParcelStatus =
 // Parcel type for frontend
 export interface IParcelFrontend {
   _id?: string; // ObjectId as string
-  senderId: string; // ObjectId as string
+  senderId?: string; // ObjectId as string
   receiverName: string;
   receiverPhone: string;
   receiverAddress: string;
@@ -28,11 +28,11 @@ export interface IParcelFrontend {
   weight: number;
   fee: number;
   deliveryDate: string; // Date as string
-  trackingId: string;
-  status: ParcelStatus;
-  trackingEvents: ITrackingEventFrontend[];
-  deliveryMan : string,
-  isBlocked: boolean;
+  trackingId?: string;
+  status?: ParcelStatus;
+  trackingEvents?: ITrackingEventFrontend[];
+  deliveryMan? : string,
+  isBlocked?: boolean;
   createdAt?: string; // Date as string
   updatedAt?: string; // Date as string
 };
