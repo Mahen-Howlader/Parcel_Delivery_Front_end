@@ -148,7 +148,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <ModeToggle></ModeToggle>
             {
-              data?.data?.email && <Button className="cursor-pointer" onClick={() => handelLogout()} variant="secondary" size={"lg"}>
+              data?.data?.email && <Button className="cursor-pointer" onClick={() => handelLogout()} variant="secondary" size={"sm"}>
                 Logout
               </Button>
             }
@@ -157,7 +157,7 @@ export default function Navbar() {
                 <Button asChild variant="ghost" className="" size={"lg"}>
                   <Link to={"/login"}>Sign In</Link>
                 </Button>
-                <Button asChild size="lg" variant={"secondary"} className="text-lg btn-special-font">
+                <Button asChild size="sm" variant={"secondary"} className="text-lg btn-special-font">
                   <Link to={"/register"}>Register</Link>
                 </Button></>
             }

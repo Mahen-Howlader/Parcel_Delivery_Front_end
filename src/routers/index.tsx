@@ -11,18 +11,29 @@ import Register from "@/pages/Register";
 import TrackingDetails from "@/pages/TrakingDetails";
 import ErrorPage from "@/pages/ErrorPage";
 import Loading from "@/components/Loading";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import AboutPage from "@/pages/About";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: App,
-    errorElement: <ErrorPage />, 
-    loader: async () => <Loading />, 
+    errorElement: <ErrorPage />,
+    loader: async () => <Loading />,
     children: [
       {
         index: true,
         Component: HomePage,
+      },
+      {
+        path: "/about",
+        Component: AboutPage,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
       },
     ],
   },

@@ -10,7 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
-import type { User } from "@/pages/Admin/Analytics";
+import type { User } from "@/pages/Admin/AllUser";
 import { useUserBlockUnblockMutation } from "@/redux/features/user/user.api";
 import { toast } from "sonner";
 

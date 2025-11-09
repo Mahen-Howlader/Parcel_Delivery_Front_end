@@ -4,15 +4,15 @@ import Footer from "./Footer";
 
 
 interface IProps {
-    children: ReactNode
+    children: ReactNode 
 }
 
 function CommonLayout({ children }: IProps) {
     return (
         <div className="min-h-screen flex flex-col">
-            <div className="bg-primary pt-5">
+            <div className="md:mt-5">
                 <Navbar></Navbar>
-                <div className="grow-1 container mx-auto px-4 ">
+                <div className="grow-1 container mx-auto md:px-4 ">
                     {children}
                 </div>
             </div>

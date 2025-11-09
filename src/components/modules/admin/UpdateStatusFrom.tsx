@@ -8,7 +8,7 @@ import { toast } from "sonner";
 interface UpdateStatusFormProps {
     parcelInfo: IParcelFrontend;
     onClose?: () => void;
-}
+};
 
 function UpdateStatusForm({ parcelInfo, onClose }: UpdateStatusFormProps) {
     // 👇 default value set from parcelInfo.status
@@ -68,6 +68,6 @@ function UpdateStatusForm({ parcelInfo, onClose }: UpdateStatusFormProps) {
             </div>
         </div>
     );
-}
+};
 
 export default UpdateStatusForm;

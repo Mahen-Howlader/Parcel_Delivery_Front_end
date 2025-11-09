@@ -3,7 +3,7 @@ import { Table, TableHeader, TableHead, TableBody, TableRow, TableCell } from "@
 import { Button } from "@/components/ui/button";
 import { useAllParcelQuery } from "@/redux/features/parcel/parcel.api";
 import { useAllUserQuery } from "@/redux/features/user/user.api";
-import type { User } from "./Analytics";
+import type { User } from "./AllUser";
 import UpdateStatusForm from "@/components/modules/admin/UpdateStatusFrom";
 import { AlertDialog, AlertDialogContent, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import type { IParcelFrontend } from "@/types/parcel.type";
