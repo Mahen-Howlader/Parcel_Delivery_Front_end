@@ -21,7 +21,7 @@ export default function AllParcel() {
         <TableHeader>
           <TableRow>
             <TableHead>Sender</TableHead>
-            <TableHead>Receiver</TableHead>
+            <TableHead>Receiver Id</TableHead>
             <TableHead>Phone</TableHead>
             <TableHead>Parcel Type</TableHead>
             <TableHead>Status</TableHead>
@@ -36,7 +36,7 @@ export default function AllParcel() {
             return (
               <TableRow key={parcel._id}>
                 <TableCell>{sender?.name}</TableCell>
-                <TableCell>{parcel.receiverName}</TableCell>
+                <TableCell>{parcel.receiverId}</TableCell>
                 <TableCell>{parcel.receiverPhone}</TableCell>
                 <TableCell>{parcel.type}</TableCell>
                 <TableCell>{parcel.status}</TableCell>

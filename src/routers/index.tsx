@@ -7,7 +7,8 @@ import { senderSidebarItems } from "./senderSidebarItem";
 import { adminSidebarItems } from "./adminSidebarItem";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
-import { userSidebarItems } from "./userSidebarItem";
+import { receiverSidebarItems } from "./receiverSidebarItem";
+import TrackingDetails from "@/pages/TrakingDetails";
 
 
 export const router = createBrowserRouter([
@@ -39,10 +40,10 @@ export const router = createBrowserRouter([
     },
     {
         Component: DashboardLayout,
-        path: "/user",
+        path: "/receiver",
         children: [
-            { index: true, element: <Navigate to={"/user/sending"}></Navigate> },
-            ...generateRoutes(userSidebarItems)
+            { index: true, element: <Navigate to={"/receiver/incoming"}></Navigate> },
+            ...generateRoutes(receiverSidebarItems)
         ]
     },
     {
@@ -52,5 +53,9 @@ export const router = createBrowserRouter([
     {
         Component: Register,
         path: "/register"
+    },
+    {
+        Component: TrackingDetails,
+        path: "/tracking/:id"
     },
 ])

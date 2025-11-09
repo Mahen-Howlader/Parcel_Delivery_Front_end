@@ -11,6 +11,13 @@ export const userApi = baseApi.injectEndpoints({
             }),
             providesTags: ["PARCEL"]
         }),
+        allReciverName: builder.query({
+            query: () => ({
+                url: "/parcels/recervers",
+                method: "GET",
+            }),
+            providesTags: ["PARCEL"]
+        }),
         parcelsMe: builder.query({
             query: () => ({
                 url: "/parcels/me",
@@ -42,15 +49,24 @@ export const userApi = baseApi.injectEndpoints({
         createParcel: builder.mutation<IResponse<null>, IParcelFrontend>({
             query: (parcelInfo) => (
                 {
-                url: `/parcels`,
-                method: "POST",
-                data : parcelInfo
-            }
-        ),
+                    url: `/parcels`,
+                    method: "POST",
+                    data: parcelInfo
+                }
+            ),
             invalidatesTags: ["PARCEL"],
+        }),
+        trakingParcel: builder.query({
+            query: (trakingId) => (
+                {
+                    url: `/parcels/track/${trakingId}`,
+                    method: "GET"
+                }
+            ),
+            providesTags: ["PARCEL"],
         }),
     })
 });
 
 
-export const { useAllParcelQuery, useParcelBlockUnblockMutation, useParcelStatusUpdateMutation, useParcelsMeQuery , useParcelCancelledMutation, useCreateParcelMutation} = userApi;
+export const { useTrakingParcelQuery,useAllParcelQuery, useParcelBlockUnblockMutation, useParcelStatusUpdateMutation, useParcelsMeQuery, useParcelCancelledMutation, useCreateParcelMutation, useAllReciverNameQuery } = userApi;

@@ -15,6 +15,7 @@ import { ModeToggle } from "./ModeToggler"
 import { authApi, useUserInfoQuery, useUserLogoutMutation } from "@/redux/features/auth/auth.api"
 import { useAppDispatch } from "@/redux/hook"
 import { role } from "@/constants/role"
+import Search from "../Search"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -22,7 +23,7 @@ const navigationLinks = [
   { href: "/about", label: "About", role: "PUBLIC" },
   { href: "/contact", label: "Contact", role: "PUBLIC" },
   { href: "/admin", label: "Dashboard", role: role.admin },
-  { href: "/user", label: "Dashboard", role: role.user },
+  { href: "/receiver", label: "Dashboard", role: role.receiver },
   { href: "/sender", label: "Dashboard", role: role.sender },
 ]
 
@@ -111,29 +112,35 @@ export default function Navbar() {
                   <>
                     {
                       link.role === "PUBLIC" && <NavigationMenuItem key={index}>
-                    <NavigationMenuLink
-                      active={link.active}
-                      href={link.href}
-                      className="font-medium text-white"
-                    >
-                      {link.label}
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
+                        <NavigationMenuLink
+                          active={link.active}
+                          href={link.href}
+                          className="font-medium text-white"
+                        >
+                          {link.label}
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
                     }
                     {
                       link.role === data?.data?.role && <NavigationMenuItem key={index}>
-                    <NavigationMenuLink
-                      active={link.active}
-                      href={link.href}
-                      className="font-medium text-white"
-                    >
-                      {link.label}
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
+                        <NavigationMenuLink
+                          active={link.active}
+                          href={link.href}
+                          className="font-medium text-white"
+                        >
+                          {link.label}
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
                     }
-                  
+
+                
                   </>
                 ))}
+
+                    <NavigationMenuLink>
+                      <Search></Search>
+                    </NavigationMenuLink>
+
               </NavigationMenuList>
             </NavigationMenu>
           </div>

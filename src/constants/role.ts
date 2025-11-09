@@ -1,5 +1,5 @@
 export const role = {
     admin: "ADMIN",
-    user: "USER",
+    receiver: "RECEIVER",
     sender: "SENDER"
 }

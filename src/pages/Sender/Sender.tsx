@@ -8,16 +8,15 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import CreateParcelFrom from "@/components/modules/Sender/createParcelFrom";
-import {  useParcelsMeQuery } from "@/redux/features/parcel/parcel.api";
+import { useParcelsMeQuery } from "@/redux/features/parcel/parcel.api";
 import ParcelTable from "@/components/modules/Sender/ParcelTabel";
 
 function Sender() {
     const [open, setOpen] = useState(false);
-  const handleCancel = (id: string) => {
-    console.log("Cancel parcel:", id);
-    // এখানে তুমি delete API কল দিতে পারবে
-  };
-   const { data: parcelData } = useParcelsMeQuery(undefined);
+    const handleCancel = (id: string) => {
+        console.log("Cancel parcel:", id);
+    };
+    const { data: parcelData } = useParcelsMeQuery(undefined);
     return (
         <div className="p-6 space-y-6">
             <div className="flex justify-end">
@@ -38,14 +37,14 @@ function Sender() {
                             This information will be used to send the parcel.
                         </AlertDialogDescription>
 
-                        <CreateParcelFrom closeModal={() => setOpen(false)}/> 
+                        <CreateParcelFrom closeModal={() => setOpen(false)} />
                     </AlertDialogContent>
 
                 </AlertDialog>
             </div>
 
 
-           <ParcelTable parcels={parcelData?.data} onCancel={handleCancel} />
+            <ParcelTable parcels={parcelData?.data} onCancel={handleCancel} />
         </div>
     );
 }

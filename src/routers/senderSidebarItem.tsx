@@ -4,18 +4,13 @@ import type { ISidebarItem } from "@/types";
 
 export const senderSidebarItems: ISidebarItem[] = [
     {
-        title: "Sender Sidebar",
+        title: "Sender Dashboard",
         items: [
-            {
+               {
                 title: "Analytics",
                 url: '/sender/analytics',
                 Component: SenderAnalytics
-            }
-        ]
-    },
-    {
-        title: "History",
-        items: [
+            },
             {
                 title: "Sending Parcel",
                 url: '/sender/create-parcel',

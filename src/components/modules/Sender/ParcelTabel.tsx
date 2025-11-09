@@ -4,7 +4,8 @@ import { AlertCancelParcel } from "../aleart/AlertCancelParcel";
 
 export interface Parcel {
     _id: string;
-    receiverName: string;
+    receiverId: string;
+    senderId : string;
     receiverPhone: string;
     receiverAddress: string;
     type: string;
@@ -28,15 +29,14 @@ export default function ParcelTable({ parcels }: ParcelTableProps) {
                 <TableHeader>
                     <TableRow>
                         <TableHead>#</TableHead>
-                        <TableHead>Receiver Name</TableHead>
+                        <TableHead>Receiver Id</TableHead>
                         <TableHead>Phone</TableHead>
                         <TableHead>Address</TableHead>
                         <TableHead>Type</TableHead>
-                        <TableHead>Weight (kg)</TableHead>
-                        <TableHead>Fee (৳)</TableHead>
+                        <TableHead>Weight </TableHead>
+                        <TableHead>Fee </TableHead>
                         <TableHead>Status</TableHead>
                         <TableHead>Delivery Date</TableHead>
-                        <TableHead>Delivery Man</TableHead>
                         <TableHead>Action</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -45,10 +45,10 @@ export default function ParcelTable({ parcels }: ParcelTableProps) {
                         parcels?.map((parcel, index) => (
                             <TableRow key={parcel._id}>
                                 <TableCell>{index + 1}</TableCell>
-                                <TableCell>{parcel.receiverName}</TableCell>
+                                <TableCell>{parcel.receiverId.slice(0,10)}...</TableCell>
                                 <TableCell>{parcel.receiverPhone}</TableCell>
-                                <TableCell>{parcel.receiverAddress}</TableCell>
-                                <TableCell>{parcel.type}</TableCell>
+                                <TableCell>{parcel.receiverAddress.slice(0,10)}...</TableCell>
+                                <TableCell>{parcel.type.slice(0,10)}...</TableCell>
                                 <TableCell>{parcel.weight}</TableCell>
                                 <TableCell>{parcel.fee}</TableCell>
                                 <TableCell>
@@ -64,7 +64,6 @@ export default function ParcelTable({ parcels }: ParcelTableProps) {
                                     </span>
                                 </TableCell>
                                 <TableCell>{new Date(parcel.deliveryDate).toLocaleDateString()}</TableCell>
-                                <TableCell>{parcel.deliveryMan || "Not assigned"}</TableCell>
                                 <TableCell>
                                     {
                                         parcel.status === "Requested" ?

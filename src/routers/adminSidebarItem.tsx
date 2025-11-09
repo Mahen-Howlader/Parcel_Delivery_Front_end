@@ -4,18 +4,13 @@ import type { ISidebarItem } from "@/types";
 
 export const adminSidebarItems: ISidebarItem[] = [
     {
-        title: "Admin Sidebar",
+        title: "Admin Dashboard",
         items: [
             {
                 title: "All User",
                 url: '/admin/analytics',
                 Component: Analytics
-            }
-        ]
-    },
-    {
-        title: "Parcel Management",
-        items: [
+            },
             {
                 title: "All Parcel",
                 url: '/admin/all-parcel',

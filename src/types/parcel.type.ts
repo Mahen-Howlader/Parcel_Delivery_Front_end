@@ -21,7 +21,7 @@ export type ParcelStatus =
 export interface IParcelFrontend {
   _id?: string; // ObjectId as string
   senderId?: string; // ObjectId as string
-  receiverName: string;
+  receiverId: string;
   receiverPhone: string;
   receiverAddress: string;
   type: string;
