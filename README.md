@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# 📦 Parcel Delivery Frontend (React + Redux Toolkit + RTK Query)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## **Project Overview**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Parcel Delivery Frontend is a **secure, role-based, and user-friendly** web application built for a **Parcel Delivery System**, similar to services like Pathao Courier or Sundarban.  
 
-## React Compiler
+This frontend allows **Senders**, **Receivers**, and **Admins** to manage parcels efficiently with real-time updates and robust tracking.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Key Features:**
 
-## Expanding the ESLint configuration
+- Public landing page with Home, About, and Contact sections  
+- Role-based dashboards for Sender, Receiver, and Admin  
+- Parcel creation, delivery confirmation, and management  
+- Unique parcel tracking ID with status logs  
+- Responsive UI with clean design  
+- Form validation, toast notifications, and loading indicators  
+- Charts and overview cards for visual data insights
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## **Tech Stack**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Frontend:**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- React.js  
+- TypeScript  
+- Redux Toolkit & RTK Query  
+- React Router  
+- Tailwind CSS  
+- lucide-react (Icons)  
+- react-toastify (Notifications)  
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Backend (Integration):**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Node.js + Express (REST API)  
+- MongoDB + Mongoose  
+- JWT + bcrypt (Authentication)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## **Setup Instructions**
+
+1. **Clone the repository:**
+
+```bash
+git clone 
+cd parcel-delivery-frontend
