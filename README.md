@@ -45,5 +45,18 @@ This frontend allows **Senders**, **Receivers**, and **Admins** to manage parcel
 1. **Clone the repository:**
 
 ```bash
-git clone 
-cd parcel-delivery-frontend
+git clone https://github.com/Mahen-Howlader/Parcel_Delivery_Front_end.git
+
+npm install
+# or
+yarn install
+2. **.env**
+
+## Environment Variables
+
+VITE_API_URL=http://localhost:5000/api
+
+npm run dev
+
+
+
